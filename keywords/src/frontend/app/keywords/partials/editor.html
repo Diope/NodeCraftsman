@@ -1,0 +1,10 @@
+<div class="span12">
+	<form>
+		<input type="text" class="input-medium" ng-model="newKeyword.value" ng-init="newKeyword.value=''" placeholder="Name of my keyword">
+		<select name="" id="" ng-model="newKeyword.categoryID" ng-init="newKeyword.categoryID = 1" ng-options="keywordCategory.id as keywordCategory.name for keywordCategory in keywordsCategories">
+		</select>
+		<button ng-class="newKeyword.value.length > 0 && 'btn btn-success' || 'btn'" ng-click="newKeyword.value.length > 0 && createkeyword(newKeyword)">Create</button>
+	</form>
+</div>
+
+<div class="gridStyle" ng-grid="keywordsGridOptions"></div>
