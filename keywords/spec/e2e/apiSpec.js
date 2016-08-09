@@ -2,10 +2,31 @@
 
 var request = require('request');
 var dbSession = require('../../src/backend/dbSession.js');
+var Server = require('../../src/backend/server.js').Server;
 var resetDatabase = require('../resetDatabase.js');
 var async = require('async');
 
 describe('The API', function() {
+
+	var server;
+
+	beforeEach(function(done) {
+		server = Server('8801');
+		server.listen(function (err) {
+			resetDatabase(dbSession, function () {
+				done(err);
+			});
+		});
+	});
+
+	afterEach(function(done) {
+		server.close(function () {
+			resetDatabase(dbSession, function () {
+				done();
+			}):
+		});
+	});
+
 	it('Should respond to a GET request at /api/keywords/', function(done) {
 		var expected = {
 			"_items": [
@@ -49,7 +70,7 @@ describe('The API', function() {
 					},
 					function (err, res, body) {
 						expect(res.statusCode).toBe(200);
-						expect(body.foo).toEqual("bar");
+						expect(body).toEqual(expected);
 						done();
 					}
 				);
