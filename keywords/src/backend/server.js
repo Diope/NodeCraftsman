@@ -30,7 +30,7 @@ var Server = function (port) {
 								console.log(err);
 								res.status.internalServerError(err);
 							} else {
-								res.object({'status': 'ok', 'id': result.insertId}).send();
+								res.object({'status': 'ok', 'id': results}).send();
 							}
 						});
 					}

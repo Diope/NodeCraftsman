@@ -1,13 +1,18 @@
 'use strict';
 
-(function () {
-	var app = angular.module('app', ['ngRoute', 'ngGrid', 'restangular']);
+(function() {
 
-	app.config(['$routeProvider',
-		function ($routeProvider) {
-			$routeProvider.when('/', {
-				templateUrl: 'app/keywords/partial/editor.html',
-				controller: 'KeywordsController'
-			});
-		}])
+  var app = angular.module('app', ['ngRoute', 'ngGrid', 'restangular']);
+
+  app.config(['$routeProvider',
+    function($routeProvider) {
+
+      $routeProvider.
+        when('/', {
+          templateUrl: 'app/keywords/partials/editor.html',
+          controller: 'KeywordsController'
+        });
+
+    }]);
+
 })();
